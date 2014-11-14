@@ -4,6 +4,7 @@ package ua.dp.skillsup;
 import org.openjdk.jmh.annotations.*;
 
 @State(Scope.Group)
+@Fork(1)
 public class CountersBenchmark {
 	private Counter counter;
 
@@ -17,7 +18,7 @@ public class CountersBenchmark {
 
 	@Benchmark
 	@Group("rw")
-	@GroupThreads(8)
+	@GroupThreads(100)
 	public void inc() {
 		counter.inc();
 	}

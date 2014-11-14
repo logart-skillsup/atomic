@@ -6,17 +6,21 @@ package ua.dp.skillsup;
  */
 public class CounterFactory {
 	public enum CounterType {
-		ATOMIC, DIVIDE_ONE, DIVIDE_TWO
+		ATOMIC,  MAGIC_3, MAGIC_7, CURSED_13, DC
 	}
 
 	public static Counter build(CounterType type) {
 		switch (type) {
 			case ATOMIC:
 				return new AtomicCounter();
-//			case DIVIDE_ONE:
-//				return new CounterDivideAndRuleOne();
-//			case DIVIDE_TWO:
-//				return new CounterDivideAndRuleOne();
+			case MAGIC_3:
+				return new MyCounter(3);
+			case MAGIC_7:
+				return new MyCounter(7);
+            case CURSED_13:
+                return new MyCounter(13);
+            case DC:
+                return new MyCounterDynamic();
 		}
 
 		throw new IllegalArgumentException();
